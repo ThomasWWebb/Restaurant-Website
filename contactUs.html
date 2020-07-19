@@ -1,0 +1,222 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/59b4b83ef0.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link href="styles/restaurantStyles.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+        <script type="text/JavaScript" src="scripts/contactUs.js"></script>
+        <title>Contact Us</title>	
+        <style>
+            #form-container {
+                padding: 1% 0 1% 0;
+                
+            }
+            @media only screen and (min-width: 576px) {
+                #form-container {
+                    margin-left: 15%;
+                }
+                label, legend, #days-to-contact {
+                    text-align: right;
+                }
+                form {
+                    width: 60%;
+                }
+            }
+            @media only screen and (max-width: 575px) {
+                form {
+                    padding: 3%;
+                }
+            }
+
+            
+            #email-label, #name-label, #been-to-restaurant-label, #days-to-contact {
+                font-weight: bold;
+            }
+
+            
+            textarea {
+                width: 100%;
+            }
+            
+
+            .form-control, textarea {
+                background-color: #FCEFEF;
+            }
+
+            #submit {
+                background-color: #FAC748;
+                color: #50514F; 
+                border-color: #FAC748;
+                font-weight: 500;
+                float: right;
+            }
+
+            #submit:hover {
+                font-weight: bold;
+            }
+
+            #success-submit {
+                text-align: center;
+                background-color: #069E2D;
+                padding-top: 2%;
+                padding-bottom: 2%;
+                display: none;
+            }
+
+            .invalid-feedback > .container {
+                background-color: #C31D2B;
+                color: white;
+                padding: 2%;
+                border-radius: .25rem;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <header class="jumbotron jumbotron-fluid" id="header">
+            <noscript style="text-align: center;">
+              <h3>Please enable JavaScript to use this page!</h3>
+            </noscript>
+            <h1 class="display-4">Dev Restaurant</h1>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html"><i class="fas fa-home"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="menu.html"><i class="fas fa-clipboard-list"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="contactUs.html"><i class="fas fa-at"></i></i></a>
+                </li>
+            </ul>
+        </header>
+
+        <div id="form-container">
+            <form form name="contact-form" action="submit.html" method="POST" onsubmit="return submitForm();">
+                <div class="form-group row">
+                    <label id="name-label" for="name" class="col-sm-6 col-form-label">Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="name">
+                        <div class="invalid-feedback">
+                            <div class="container">
+                                <div>Please enter your name</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label id="email-label" for="email" class="col-sm-6 col-form-label">Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" id="email">
+                        <div class="invalid-feedback">
+                            <div class="container">
+                                <div>Please enter a valid email</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="phone" class="col-sm-6 col-form-label">Phone:</label>
+                    <div class="col-sm-6">
+                        <input type="tel" class="form-control" id="phone">
+                        <div class="invalid-feedback">
+                            <div class="container">
+                                <div>Invalid phone number</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="reason-for-inquiry" class="col-sm-6 col-form-label">Reason for Inquiry:</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="reason-for-inquiry">
+                            <option>Catering</option>
+                            <option>Private Party</option>
+                            <option>Feedback</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="additional-info" class="col-sm-6 col-form-label">Additional Information</label>
+                    <div class="col-sm-6">
+                        <textarea class="additional-info" rows="5" name="additional-info"></textarea>
+                    </div>
+                </div>
+                <fieldset class="form-group" required>
+                    <div class="row">
+                    <legend id="been-to-restaurant-label" class="col-form-label col-sm-6 pt-0">Have you been to the restaurant?</legend>
+                        <div class="col-sm-6" >
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input custom-radio" type="radio" name="visited-choice" id="choice-no" value="choice-no" >
+                                <label class="form-check-label" for="choice-no">No</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="visited-choice" id="choice-yes" value="choice-yes">
+                                <label class="form-check-label" for="choice-yes">Yes</label>
+                            </div>
+                            <div class="invalid-feedback" id="must-select-radio">
+                                <div class="container">
+                                    <div>Please select an option</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group row">
+                  <div id="days-to-contact" class="col-sm-6">Best days to contact you:</div>
+                  <div class="col-sm-6">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="monday" name="day-choice">
+                      <label class="form-check-label" for="monday">M</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="tuesday" name="day-choice">
+                      <label class="form-check-label" for="tuesday">T</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="wednesday" name="day-choice">
+                        <label class="form-check-label" for="wednesday">W</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="thursday" name="day-choice">
+                        <label class="form-check-label" for="thursday">Th</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="friday" name="day-choice">
+                        <label class="form-check-label" for="friday">F</label>
+                    </div>
+                    <div class="invalid-feedback" id="must-select-days" >
+                        <div class="container">
+                            <div>Please select the best days to contact you</div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-12">
+                    <button type="submit" id="submit" value="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </form>
+        </div>
+        <div id="success-submit" class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-6">Successfully Submitted!</h1>
+              </div>
+        </div>
+        <footer id="footer">
+            <div class="container">
+                <div><i class="fas fa-map-marker-alt"></i></div>
+                <div>Street, City, Postcode</div>
+                <div>Telephone Number</div>
+            </div>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    </body> 
+</html>
